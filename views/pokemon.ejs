@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pokemon ? pokemon.name : 'Pokemon Not Found' %></title>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+
+    <main>
+      <% if (pokemon) { %>
+        <h1><%= pokemon.name %></h1>
+        <p>ID: <%= pokemon.id %></p>
+        <p>Height: <%= pokemon.height %></p>
+        <p>Weight: <%= pokemon.weight %></p>
+
+        <section>
+          <h2>Types</h2>
+          <ul>
+            <% pokemon.types.forEach((typeEntry) => { %>
+              <li><%= typeEntry.type.name %></li>
+            <% }) %>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Stats</h2>
+          <ul>
+            <% pokemon.stats.forEach((statEntry) => { %>
+              <li><%= statEntry.stat.name %>: <%= statEntry.base_stat %></li>
+            <% }) %>
+          </ul>
+        </section>
+      <% } else { %>
+        <h1>Pokemon Not Found</h1>
+        <p><%= errorMessage || 'No details available.' %></p>
+      <% } %>
+    </main>
+  </body>
+</html>
