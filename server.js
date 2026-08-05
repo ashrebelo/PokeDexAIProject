@@ -8,6 +8,7 @@ const passport = require('passport');
 const path = require('path');
 const configurePassport = require('./config/passport');
 const authRoutes = require('./routes/auth');
+const favoriteRoutes = require('./routes/favorites');
 const pokedexRoutes = require('./routes/pokedex');
 
 const app = express();
@@ -56,6 +57,7 @@ async function startServer() {
 
     app.use('/', pokedexRoutes);
     app.use('/auth', authRoutes);
+    app.use('/favorites', favoriteRoutes);
 
     app.listen(port, () => {
       console.log(`Server listening on port ${port}`);

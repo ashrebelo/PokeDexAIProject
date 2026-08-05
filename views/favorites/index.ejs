@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites</title>
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main>
+      <h1>Your Favorites</h1>
+
+      <% if (favorites.length) { %>
+        <ul>
+          <% favorites.forEach((favorite) => { %>
+            <li>
+              <a href="/pokemon/<%= favorite.name %>"><%= favorite.name %></a>
+              <form method="post" action="/favorites/<%= favorite.name %>/remove">
+                <button type="submit">Remove</button>
+              </form>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>You have not saved any favorites yet.</p>
+      <% } %>
+    </main>
+  </body>
+</html>

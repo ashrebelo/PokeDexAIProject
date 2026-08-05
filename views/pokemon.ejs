@@ -11,6 +11,17 @@
     <main>
       <% if (pokemon) { %>
         <h1><%= pokemon.name %></h1>
+        <% if (user) { %>
+          <% if (isFavorited) { %>
+            <form method="post" action="/favorites/<%= pokemon.name %>/remove">
+              <button type="submit">Remove from Favorites</button>
+            </form>
+          <% } else { %>
+            <form method="post" action="/favorites/<%= pokemon.name %>">
+              <button type="submit">Save to Favorites</button>
+            </form>
+          <% } %>
+        <% } %>
         <p>ID: <%= pokemon.id %></p>
         <p>Height: <%= pokemon.height %></p>
         <p>Weight: <%= pokemon.weight %></p>
